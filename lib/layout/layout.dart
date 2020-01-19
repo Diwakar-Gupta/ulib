@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:ulib/layout/pagerrouter.dart';
-import 'package:ulib/layout/searchBar.dart';
 import 'package:ulib/layout/sidebar.dart';
-import 'package:ulib/screens/dashboard.dart';
 
 import 'floatingbutton.dart';
 
-class Layout extends StatelessWidget {
+class Layout extends StatefulWidget {
+  @override
+  _LayoutState createState() => _LayoutState();
+}
+
+class _LayoutState extends State<Layout> {
   var pagerouter = PageRouter();
+  var showSearchDropDown = false;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +34,39 @@ class Layout extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      SearchDropDown(),
+                      Container(
+                        decoration: BoxDecoration(
+                            color: Color(
+                                0xfff1f3f4), //Theme.of(context).scaffoldBackgroundColor,
+                            borderRadius: BorderRadius.circular(10)),
+                        constraints:
+                            BoxConstraints(minWidth: 100, maxWidth: 600),
+                        child: ListTile(
+                          onTap: () {setState(() {
+                            showSearchDropDown =false;
+                          });},
+                          leading: Icon(Icons.search),
+                          title: TextField(
+                            onSubmitted: (text){
+                              if(showSearchDropDown)setState(() {
+                                showSearchDropDown =false;
+                                //do some stuff
+                              });
+                            },
+                            decoration:
+                                InputDecoration.collapsed(hintText: 'Search'),
+                          ),
+                          trailing: IconButton(
+                            icon: Icon(showSearchDropDown?Icons.keyboard_arrow_up: Icons.keyboard_arrow_down),
+                            ///hoverColor: Colors.red,
+                            onPressed: (){
+                              setState(() {
+                                showSearchDropDown =!showSearchDropDown;
+                              });
+                            },
+                          ),
+                        ),
+                      ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 15),
                         child: Row(
@@ -54,9 +90,24 @@ class Layout extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: pagerouter,
+                  child: Stack(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: pagerouter,
+                      ),
+                      Opacity(
+                        opacity: showSearchDropDown ? 1 : 0,
+                        child: Positioned(
+                          left: 20,
+                          child: Container(
+                            color: Colors.red,
+                            width: 600,
+                            height: 150,
+                          ),
+                        ),
+                      )
+                    ],
                   ),
                 )
               ],
