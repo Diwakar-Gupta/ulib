@@ -13,15 +13,29 @@ class _CheckInState extends State<CheckIn> {
   Widget build(BuildContext context) {
     List<Widget> widgets = [
       Wrap(
-        alignment: WrapAlignment.spaceAround,
+        alignment: WrapAlignment.spaceEvenly,
         children: <Widget>[
           Container(
             constraints: BoxConstraints(maxWidth: 450),
-            decoration: BoxDecoration(border: Border.all(width: 2)),
+            decoration: BoxDecoration(
+              //border: Border.all(width: 0),
+              color: Theme.of(context).canvasColor,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey,
+                  blurRadius: 1.0, // has the effect of softening the shadow
+                  spreadRadius: 1, // has the effect of extending the shadow
+                  offset: Offset(
+                    1.0, // horizontal, move right 10
+                    1.0, // vertical, move down 10
+                  ),
+                )
+              ],
+            ),
             child: ListTile(
               leading: Text('Barcode: '),
               title: TextField(
-                decoration: InputDecoration(labelText: 'Barcode'),
+                decoration: InputDecoration.collapsed(hintText: 'Barcode'),
               ),
               trailing: RaisedButton(
                 child: Text('Submit'),
@@ -35,7 +49,21 @@ class _CheckInState extends State<CheckIn> {
           ),
           Container(
             constraints: BoxConstraints(maxWidth: 450),
-            decoration: BoxDecoration(border: Border.all(width: 2)),
+            decoration: BoxDecoration(
+              //border: Border.all(width: 0),
+              color: Theme.of(context).canvasColor,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey,
+                  blurRadius: 1.0, // has the effect of softening the shadow
+                  spreadRadius: 1, // has the effect of extending the shadow
+                  offset: Offset(
+                    1.0, // horizontal, move right 10
+                    1.0, // vertical, move down 10
+                  ),
+                )
+              ],
+            ),
             child: Column(
               children: <Widget>[
                 ListTile(
@@ -95,7 +123,12 @@ class _CheckInState extends State<CheckIn> {
           ),
         ));
 
-        widgets.insert(1,SizedBox(width: 10,height: 10,));
+    widgets.insert(
+        1,
+        SizedBox(
+          width: 10,
+          height: 10,
+        ));
 
     return Container(
       child: Column(children: widgets),

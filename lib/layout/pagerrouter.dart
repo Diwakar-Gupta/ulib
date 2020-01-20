@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ulib/screens/circulations/checkin.dart';
 import 'package:ulib/screens/dashboard.dart';
 
 class PageRouter extends StatefulWidget {
@@ -13,7 +14,7 @@ void setPage(Widget page) {
 }
 
 class _PageRouterState extends State<PageRouter> {
-  Widget _currentPage = Dashboard();
+  Widget _currentPage = CheckIn();
   void setPage(Widget page) {
     setState(() {
       _currentPage = page;

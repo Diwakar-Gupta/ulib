@@ -11,8 +11,8 @@ class MyApp extends StatelessWidget {
         title: 'Library',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          primaryColor: Colors.blue,
-          accentColor: Color(0xFFbbfedb),
+          primaryColor: Colors.blue, //selected tile
+          accentColor: Colors.blue,//Color(0xFFbbfedb),  //checkbox
           scaffoldBackgroundColor: Color(0xFFf9f9f9),
           canvasColor: Colors.white
         ),

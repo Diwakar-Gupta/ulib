@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:ulib/screens/circulations/checkin.dart';
 import 'package:ulib/screens/dashboard.dart';
 
 import 'pagerrouter.dart';
@@ -14,10 +15,11 @@ class Sidebar extends StatefulWidget {
 
 class _SidebarState extends State<Sidebar> {
 
-  var _selected = 'Dashboard';
+  var _selected = 'Circulation';
   final _pageMapper = {
     'Dashboard': Dashboard(),
     'Member': Text('member'),
+    'Circulation': CheckIn(),
   };
 
   void setPage(String page) {

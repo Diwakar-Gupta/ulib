@@ -31,62 +31,64 @@ class _LayoutState extends State<Layout> {
                       const EdgeInsets.symmetric(vertical: 7, horizontal: 10),
                   color: Theme.of(context).canvasColor,
                   height: 64,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Container(
-                        decoration: BoxDecoration(
-                            color: Color(
-                                0xfff1f3f4), //Theme.of(context).scaffoldBackgroundColor,
-                            borderRadius: BorderRadius.circular(10)),
-                        constraints:
-                            BoxConstraints(minWidth: 100, maxWidth: 600),
-                        child: ListTile(
-                          onTap: () {setState(() {
-                            showSearchDropDown =false;
-                          });},
-                          leading: Icon(Icons.search),
-                          title: TextField(
-                            onSubmitted: (text){
-                              if(showSearchDropDown)setState(() {
-                                showSearchDropDown =false;
-                                //do some stuff
-                              });
-                            },
-                            decoration:
-                                InputDecoration.collapsed(hintText: 'Search'),
-                          ),
-                          trailing: IconButton(
-                            icon: Icon(showSearchDropDown?Icons.keyboard_arrow_up: Icons.keyboard_arrow_down),
-                            ///hoverColor: Colors.red,
-                            onPressed: (){
-                              setState(() {
-                                showSearchDropDown =!showSearchDropDown;
-                              });
-                            },
+                  child: Material(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Container(
+                          decoration: BoxDecoration(
+                              color: Color(
+                                  0xfff1f3f4), //Theme.of(context).scaffoldBackgroundColor,
+                              borderRadius: BorderRadius.circular(10)),
+                          constraints:
+                              BoxConstraints(minWidth: 100, maxWidth: 600),
+                          child: ListTile(
+                            onTap: () {setState(() {
+                              showSearchDropDown =false;
+                            });},
+                            leading: Icon(Icons.search),
+                            title: TextField(
+                              onSubmitted: (text){
+                                if(showSearchDropDown)setState(() {
+                                  showSearchDropDown =false;
+                                  //do some stuff
+                                });
+                              },
+                              decoration:
+                                  InputDecoration.collapsed(hintText: 'Search'),
+                            ),
+                            trailing: IconButton(
+                              icon: Icon(showSearchDropDown?Icons.keyboard_arrow_up: Icons.keyboard_arrow_down),
+                              //hoverColor: Colors.red,//Color(0xFFe3dcdc),
+                              onPressed: (){
+                                setState(() {
+                                  showSearchDropDown =!showSearchDropDown;
+                                });
+                              },
+                            ),
                           ),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15),
-                        child: Row(
-                          children: <Widget>[
-                            IconButton(
-                              icon: Icon(Icons.add_alarm),
-                              onPressed: () {},
-                            ),
-                            IconButton(
-                              icon: Icon(Icons.add_alarm),
-                              onPressed: () {},
-                            ),
-                            IconButton(
-                              icon: Icon(Icons.add_alarm),
-                              onPressed: () {},
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 15),
+                          child: Row(
+                            children: <Widget>[
+                              IconButton(
+                                icon: Icon(Icons.add_alarm),
+                                onPressed: () {},
+                              ),
+                              IconButton(
+                                icon: Icon(Icons.add_alarm),
+                                onPressed: () {},
+                              ),
+                              IconButton(
+                                icon: Icon(Icons.add_alarm),
+                                onPressed: () {},
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ),
                 Expanded(
@@ -96,13 +98,13 @@ class _LayoutState extends State<Layout> {
                         padding: const EdgeInsets.all(8.0),
                         child: pagerouter,
                       ),
-                      Opacity(
-                        opacity: showSearchDropDown ? 1 : 0,
-                        child: Positioned(
-                          left: 20,
+                      Positioned(
+                        left: 20,
+                        child: Opacity(
+                          opacity: showSearchDropDown ? 1 : 0,
                           child: Container(
                             color: Colors.red,
-                            width: 600,
+                            width: 580,
                             height: 150,
                           ),
                         ),
